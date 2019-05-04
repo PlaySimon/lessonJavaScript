@@ -72,4 +72,4 @@ let isChecked = true,
 console.log(isChecked && isClos); // && знак "И"  true при полном совпадении
 console.log(isChecked || !isClos); // || знак "ИЛИ" true при хотябы одном совпадении
                                     // ! знак переварачивает значение 
-console.log(isChecked || isClos);
+console.log(isChecked || isClos);   
