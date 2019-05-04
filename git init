@@ -1,0 +1,21 @@
+git init 
+echo >> README.md
+git config --local // --Global 
+git config --local user.name "XXXXXXXX"
+git config --local user.email XXXXXXXXXX@gmail.com
+git status
+git add -A // -A All file 
+git status
+git commit -a -m "Полный курс по JavaScript - с нуля до результата-1"
+git status
+git log // All logs users
+git log --help // for help
+
+git remote add lessonJavaScript https://github.com/PlaySimon/lessonJavaScript.git
+
+git push -u lessonJavaScript master // -u memory parameters
+git status
+git add -A
+git status
+git commit -a -m "Полный курс по JavaScript - с нуля до результата-2"
+git push -u lessonJavaScript master
