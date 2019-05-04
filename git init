@@ -1,6 +1,6 @@
 git init 
 echo >> README.md
-git config --local // --Global 
+git config --local // --global 
 git config --local user.name "XXXXXXXX"
 git config --local user.email XXXXXXXXXX@gmail.com
 git status
