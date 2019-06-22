@@ -1,8 +1,21 @@
 'use strict';
 
 
-let money = +prompt("Ваш бюджет на месяц", "");
-let time = prompt("Введите дату в формате YYYY-MM-DD", "");
+let money,time;
+
+
+function start (){ // положил код в функция что бы ее отдельно вызывать
+money = +prompt("Ваш бюджет на месяц", "");
+time = prompt("Введите дату в формате YYYY-MM-DD", "");
+
+    while (isNaN(money) || money == "" || money == null) {
+        money = +prompt ("Ваш бюджет на месяц?", ""); 
+    }
+}
+
+
+start ();
+
 
 let appData = {
     budget: money,
@@ -10,7 +23,7 @@ let appData = {
     expenses:{},
     optionalExpenses:{},
     income : [],
-    savings: false
+    savings: true
 };
 
 let a1 = prompt("Введите обязательно статью расходов a1", "Введите обязательно статью расходов"),
@@ -29,23 +42,29 @@ let a1 = prompt("Введите обязательно статью расход
     console.log(a3);
     console.log(a4);
 
-    for (let i = 0; i<2; i++) {
-        let a = prompt("Введите обязательно статью расходов цикл", "Введите обязательно статью расходов"),
-            b = +prompt("Во сколько обойдётся цикл", "1234567890");
-
-        if ((typeof(a))==="string" && (typeof(a) != null) && (typeof(b) != null) && a !="" && b != "" && a.length < 50) {
-            console.log("done");
-            appData.expenses[a] = b;
-        } else {
-            console.log("не тот формат");
-            i--;
+    function chooseExpenses (){ // положил цикл в функция что бы его(цикл) отдельно вызывать
+        for (let i = 0; i<2; i++) {
+            let a = prompt("Введите обязательно статью расходов цикл", "Введите обязательно статью расходов"),
+                b = prompt("Во сколько обойдётся цикл", "1234567890");
+    
+            if ((typeof(a))==="string" && (typeof(a) != null) && (typeof(b) != null) && a !="" && b != "" && a.length < 50) {
+                console.log("done");
+                appData.expenses[a] = b;
+            } else {
+                console.log("не тот формат");
+                i--;
+            };
+    
+           
+    
         };
 
-       
+    }
 
-    };
+   chooseExpenses();
 
-    appData.moneyPerDay = appData.budget / 30;
+    appData.moneyPerDay = (appData.budget / 30).toFixed(2); // .toFixed() округляет и возврашает String 
+
     alert("Ежедневный бюджет  " + appData.moneyPerDay);
 
     // Используем цикл WHILE
@@ -105,3 +124,18 @@ let a1 = prompt("Введите обязательно статью расход
     } else{ 
         console.log("произошла ошибка")
     }
+
+    function checkSavings () {
+        if (appData.savings == true) { // appData.savings == true проверить состояние в объекте treu or false
+            let save = +prompt("Какая сумма накоплений"),
+            percent = +prompt("Под какой процент");
+
+            appData.monthIncome = save/100/12+percent;
+            alert("Доход в месяц с вашего депозита: " + appData.monthIncome);
+        }
+    }
+
+    checkSavings();
+
+
+    
